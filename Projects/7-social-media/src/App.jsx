@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import CreatePost from './components/createPost';
 import PostList from './components/PostList';
 import { useState } from 'react';
+import PostListProvider from './store/post-list-store';
 
 function App() {
 
