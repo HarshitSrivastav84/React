@@ -1,21 +1,87 @@
+import {useRef, useContext} from "react";
+import { PostList } from "../store/post-list-store";
+
 const CreatePost = () => {
+
+    const {addPost} = useContext(PostList);
+
+    const userIDElement = useRef();
+    const postTitleElement = useRef();
+    const postBodyElement = useRef();
+    const reactionsElement = useRef();
+    const tagsElement = useRef();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const userID = userIDElement.current.value;
+        const postTitle = postTitleElement.current.value;
+        const postBody = postBodyElement.current.value;
+        const reactions = reactionsElement.current.value;
+        const tags = tagsElement.current.value.split(" ");
+
+        // console.log(`User ID: ${userID}`);
+        addPost(userID, postTitle, postBody, reactions, tags);
+    }
+
     return (
         <>
-            <form>
+            <form className="create-post" onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    <label htmlFor="userID" className="form-label">
+                        Enter User ID</label>
+                    <input 
+                        type="text"
+                        ref={userIDElement}
+                        className="form-control"
+                        id="userID"
+                        placeholder="Your user ID"
+                        aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" />
+                    <label htmlFor="title" className="form-label">
+                        Post title</label>
+                    <input type="text"
+                        ref={postTitleElement}
+                        className="form-control"
+                        id="title"
+                        placeholder="How are you feeling today..."
+                        aria-describedby="emailHelp" />
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                <div className="mb-3">
+                    <label htmlFor="body" className="form-label">
+                        Post content</label>
+                    <textarea 
+                    rows="4"
+                        type="text"
+                        ref = {postBodyElement}
+                        className="form-control"
+                        id="body"
+                        placeholder="Tell us something about your day..."
+                        aria-describedby="emailHelp" />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="mb-3">
+                    <label htmlFor="reactions" className="form-label">
+                        Number of reactions</label>
+                    <input 
+                        type="text"
+                        ref={reactionsElement}
+                        className="form-control"
+                        id="reactions"
+                        placeholder="How many people reacted to this post"
+                        aria-describedby="emailHelp" />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="tags" className="form-label">
+                        Enter your hashtags here</label>
+                    <input 
+                        type="text"
+                        ref = {tagsElement}
+                        className="form-control"
+                        id="tags"
+                        placeholder="Enter your tags using space"
+                        aria-describedby="emailHelp" />
+                </div>
+                <button type="submit" className="btn btn-primary">Post</button>
             </form>
         </>
     );
