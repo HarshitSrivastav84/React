@@ -1,9 +1,9 @@
-import {useRef, useContext} from "react";
+import { useRef, useContext } from "react";
 import { PostList } from "../store/post-list-store";
 
 const CreatePost = () => {
 
-    const {addPost} = useContext(PostList);
+    const { addPost } = useContext(PostList);
 
     const userIDElement = useRef();
     const postTitleElement = useRef();
@@ -16,8 +16,15 @@ const CreatePost = () => {
         const userID = userIDElement.current.value;
         const postTitle = postTitleElement.current.value;
         const postBody = postBodyElement.current.value;
-        const reactions = reactionsElement.current.value;
+        // const reactions = reactionsElement.current.value;
+        const reactions = Number(reactionsElement.current.value);
         const tags = tagsElement.current.value.split(" ");
+
+        userIDElement.current.value = "";
+        postTitleElement.current.value = "";
+        postBodyElement.current.value = "";
+        reactionsElement.current.value = "";
+        tagsElement.current.value = "";
 
         // console.log(`User ID: ${userID}`);
         addPost(userID, postTitle, postBody, reactions, tags);
@@ -29,7 +36,7 @@ const CreatePost = () => {
                 <div className="mb-3">
                     <label htmlFor="userID" className="form-label">
                         Enter User ID</label>
-                    <input 
+                    <input
                         type="text"
                         ref={userIDElement}
                         className="form-control"
@@ -50,10 +57,10 @@ const CreatePost = () => {
                 <div className="mb-3">
                     <label htmlFor="body" className="form-label">
                         Post content</label>
-                    <textarea 
-                    rows="4"
+                    <textarea
+                        rows="4"
                         type="text"
-                        ref = {postBodyElement}
+                        ref={postBodyElement}
                         className="form-control"
                         id="body"
                         placeholder="Tell us something about your day..."
@@ -62,8 +69,8 @@ const CreatePost = () => {
                 <div className="mb-3">
                     <label htmlFor="reactions" className="form-label">
                         Number of reactions</label>
-                    <input 
-                        type="text"
+                    <input
+                        type="number"
                         ref={reactionsElement}
                         className="form-control"
                         id="reactions"
@@ -73,9 +80,9 @@ const CreatePost = () => {
                 <div className="mb-3">
                     <label htmlFor="tags" className="form-label">
                         Enter your hashtags here</label>
-                    <input 
+                    <input
                         type="text"
-                        ref = {tagsElement}
+                        ref={tagsElement}
                         className="form-control"
                         id="tags"
                         placeholder="Enter your tags using space"

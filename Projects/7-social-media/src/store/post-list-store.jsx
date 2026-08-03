@@ -1,23 +1,7 @@
 import { createContext } from "react";
 import { useReducer } from "react";
 
-const DEFAULT_POST_LIST = [{
-    id: '1',
-    title: 'Going to Mumbai',
-    body: 'Hi friends, I am going to Mumbai for my vacations. Hope to enjoy a lot. Peace out.',
-    reactions: 2,
-    userID: "user-9",
-    tags: ["vacations", "Mumbai", "Enjoying"],
-},
-{
-    id: "2",
-    title: "Pass ho bhai",
-    body: "4 saal ki masti ke baad bhi ho gaye hai pass. Hard to believe.",
-    reactions: 15,
-    userID: "user-12",
-    tags: ["Graduating", "Unbelievable"],
-},
-];
+
 // const DEFAULT_CONTEXT = {
 //     postList: [],
 //     addPost: () => {},
@@ -29,6 +13,7 @@ export const PostList = createContext(
         postList: [],
         addPost: () => { },
         deletePost: () => { },
+        addInitialPost: () => { }
     }
 );
 
@@ -38,8 +23,10 @@ const postListReducer = (currPostList, action) => {
     if (action.type === "DELETE_POST") {
         newPostList = currPostList.filter(post => post.id !== action.payload.postID
         );
-    }else if (action.type === "ADD_KARO_POST") {
+    } else if (action.type === "ADD_KARO_POST") {
         newPostList = [action.payload, ...currPostList];
+    } else if (action.type === "ADD_INITIAL_POSTS") {
+        newPostList = action.payload.posts;
     }
     return newPostList;
 }
@@ -49,7 +36,7 @@ const PostListProvider = ({ children }) => {
     const [postList, dispatchPostList] = useReducer(
 
         // Reducer function and default value
-        postListReducer, DEFAULT_POST_LIST);
+        postListReducer, []);
 
     const addPost = (userID, postTitle, postBody, reactions, tags) => {
         // console.log(`Adding post with userID: ${userID}`);
@@ -63,9 +50,19 @@ const PostListProvider = ({ children }) => {
                 id: Date.now(),
                 title: postTitle,
                 body: postBody,
-                reactions: reactions,
-                userID: userID,
-                tags: tags,
+                reactions,
+                userID,
+                tags,
+            }
+        })
+    }
+
+    // For mass change in the posts
+    const addInitialPost = (posts) => {
+        dispatchPostList({
+            type: "ADD_INITIAL_POSTS",
+            payload: {
+                posts: posts
             }
         })
     }
@@ -83,7 +80,7 @@ const PostListProvider = ({ children }) => {
     return <PostList.Provider value={
         // {postList: postList, addPost: addPost, deletePost: deletePost}
         // It gets value as postList and methods
-        { postList, addPost, deletePost }
+        { postList, addPost, deletePost, addInitialPost }
     }>
         {children}
     </PostList.Provider>
