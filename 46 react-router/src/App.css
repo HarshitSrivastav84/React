@@ -1,0 +1,42 @@
+.app-container{
+    display: flex;
+}
+
+.content{
+    width: 100%;
+}
+
+.sidebar{
+    min-height: 500px;
+}
+
+.card{
+    width: 180px;
+}
+
+.post-card{
+    margin: 20px 50px;
+}
+
+.hashtag{
+    margin: 0px 3px;
+}
+
+.reactions{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.create-post{
+    width: 80%;
+    margin: 50px;
+    margin-left: 10%;
+}
+
+.welcome-message{
+    margin: 100px;
+}
+
+.loadingSpinner{
+    margin: 100px;
+}
