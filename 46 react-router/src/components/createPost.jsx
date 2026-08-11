@@ -1,7 +1,11 @@
 import { useRef, useContext } from "react";
 import { PostList } from "../store/post-list-store";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
+
+    // To navigate
+    const navigate = useNavigate();
 
     const { addPost } = useContext(PostList);
 
@@ -20,7 +24,7 @@ const CreatePost = () => {
         const reactions = Number(reactionsElement.current.value);
         const tags = tagsElement.current.value.split(" ");
 
-                // Clear the input fields after submission
+        // Clear the input fields after submission
         // userIDElement.current.value = "";
         // postTitleElement.current.value = "";
         // postBodyElement.current.value = "";
@@ -28,20 +32,23 @@ const CreatePost = () => {
         // tagsElement.current.value = "";
 
         /* updating title of product with id 1 */
-        fetch('https://dummyjson.com/products/add', {
+        fetch('https://dummyjson.com/posts/add', {
             method: 'POST', /* or PATCH */
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 title: postTitle,
                 body: postBody,
-                reactions,
-                userID,
-                tags,
+                reactions: reactions,
+                userID: userID,
+                tags: tags,
             })
         })
             .then(res => res.json())
-            .then(console.log)
-            .then(post => addPost(post));
+            // .then(console.log)
+            .then((post) => {
+                addPost(post);
+            });
+            navigate("/");
 
         // console.log(`User ID: ${userID}`);
 

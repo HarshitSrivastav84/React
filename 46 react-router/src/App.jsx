@@ -7,6 +7,7 @@ import CreatePost from './components/createPost';
 import PostList from './components/PostList';
 import { useState } from 'react';
 import PostListProvider from './store/post-list-store';
+import { Outlet } from 'react-router-dom';
 
 function App() {
 
@@ -20,13 +21,20 @@ function App() {
 
         <div className="content">
           <Header></Header>
-          {selectedTab === "Home" ? (
+
+          <Outlet></Outlet>
+
+          { /* selectedTab logic*/
+          
+          /* {selectedTab === "Home" ? (
             <PostList></PostList>
           ) : (
             <CreatePost></CreatePost>
-          )}
+          )} */}
+
           {/* <CreatePost></CreatePost>
           <PostList></PostList> */}
+          
           <Footer></Footer>
         </div>
       </div>

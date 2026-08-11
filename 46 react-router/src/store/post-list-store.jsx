@@ -27,6 +27,9 @@ const postListReducer = (currPostList, action) => {
         newPostList = [action.payload, ...currPostList];
     } else if (action.type === "ADD_INITIAL_POSTS") {
         newPostList = action.payload.posts;
+    } else {
+        newPostList = currPostList;
+
     }
     return newPostList;
 }
@@ -48,12 +51,20 @@ const PostListProvider = ({ children }) => {
         dispatchPostList({
             type: "ADD_KARO_POST",
             payload: {
+                // id: Date.now(),
+                // title: post.Title,
+                // body: post.Body,
+                // reactions: post.reactions,
+                // userID: post.userId,
+                // tags: post.tags,
+
+                // AI
                 id: Date.now(),
-                title: postTitle,
-                body: postBody,
-                reactions,
-                userID,
-                tags,
+                title: post.Title || post.title || "",
+                body: post.Body || post.body || "",
+                reactions: post.reactions ?? { likes: 0, dislikes: 0 },
+                userID: post.userId || post.userID || "",
+                tags: Array.isArray(post.tags) ? post.tags : [],
             }
         })
     }
@@ -63,7 +74,12 @@ const PostListProvider = ({ children }) => {
         dispatchPostList({
             type: "ADD_INITIAL_POSTS",
             payload: {
-                posts: posts
+                posts: posts    // This is for fetching
+                // title: post.Title,
+                // body: post.Body,
+                // reactions: post.reactions,
+                // userID: post.userId,
+                // tags: post.tags,
             }
         })
     }
