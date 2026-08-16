@@ -1,10 +1,8 @@
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import HomeItem from "./components/HomeItem"
+import HomeItem from "../components/HomeItem"
 
-function App() {
+const Home = () => {
 
-  const  ItemObj = {
+    const  ItemObj = {
         id: '001',
         image: '../images/1.jpg',
         company: 'Carlton London',
@@ -37,26 +35,12 @@ function App() {
             
           };
 
-  return (
-    <>
-      <Header />
-      <main>
+    return <main>
+        <h1>Home</h1>
         <div className="items-container">
           <HomeItem item={ItemObj}/>
         </div>
       </main>
-      <Footer></Footer>
-    </>
-  )
 }
 
-export default App
-
-
-
-
-
-
-// git subtree split --prefix="Projects/9-Myntra Clone" -b vastraa-branch
-// git push vastraa vastraa-branch:main --force
-// git branch -D vastraa-branch
+export default Home;

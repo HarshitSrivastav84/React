@@ -21,11 +21,13 @@ const Header = () => {
                 <input className="search_input" placeholder="Search for products, brands and more" />
             </div>
             <div className="action_bar">
-                <div className="action_container">
-                    {/* <span className="material-symbols-outlined action_icon">person</span> */}
-                    <IoPerson />
-                    <span className="action_name">Profile</span>
-                </div>
+                <a href="/profile">
+                    <div className="action_container">
+                        {/* <span className="material-symbols-outlined action_icon">person</span> */}
+                        <IoPerson />
+                        <span className="action_name">Profile</span>
+                    </div>
+                </a>
 
                 <div className="action_container">
                     {/* <span className="material-symbols-outlined action_icon">favorite</span> */}
@@ -33,7 +35,7 @@ const Header = () => {
                     <span className="action_name">Wishlist</span>
                 </div>
 
-                <a className="action_container" href="pages/bag.html">
+                <a className="action_container" href="/bag">
                     {/* <span className="material-symbols-outlined action_icon">shopping_bag</span> */}
                     <LuBaggageClaim />
                     <span className="action_name">Bag</span>
