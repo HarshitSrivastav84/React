@@ -14,13 +14,14 @@ function App() {
   )
 }
 
-export default App
+export default App;
 
 
 
 
 
 
-// git subtree split --prefix="Projects/9-Myntra Clone" -b vastraa-branch
+// git subtree split --prefix="Projects/9-Myntra
+// Clone" -b vastraa-branch
 // git push vastraa vastraa-branch:main --force
 // git branch -D vastraa-branch

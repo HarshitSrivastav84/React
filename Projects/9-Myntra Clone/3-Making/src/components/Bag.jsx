@@ -1,7 +1,22 @@
 // import Header from "./Header";
 // import Footer from "./Footer";
 
+import BagSummary from "../components/BagSummary";
+import BagItems from "./BagItem";
+
 const Bag = () => {
+
+    const item = {
+        id: '001',
+        image: '../images/1.jpg',
+        company: 'Carlton London',
+        item_name: 'Rhodium-Plated CZ Floral Studs',
+        current_price: 606,
+        original_price: 1045,
+        discount_percentage: 42,
+        return_period: 14,
+        delivery_date: '10 Oct 2023',
+    };
 
     return (
         <>
@@ -11,9 +26,10 @@ const Bag = () => {
                 <h1>Bag</h1>
                 <div className="bag-page">
                     <div className="bag-items-container">
+                        <BagItems item={item} />
                     </div>
-                    <div className="bag-summary">
-                    </div>
+
+                    <BagSummary />
 
                 </div>
             </main>

@@ -1,12 +1,13 @@
 import { IoPerson } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
 import { LuBaggageClaim } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return <>
         <header>
             <div className="logo_container">
-                <a href="#"><img className="myntra_home" src="../images/vastraa_logo.jpg" alt="Vastraa Home" /></a>
+                <Link to="/"><img className="myntra_home" src="../images/vastraa_logo.jpg" alt="Vastraa Home" /></Link>
             </div>
             <nav className="nav_bar">
                 <a href="#">Men</a>
@@ -21,13 +22,13 @@ const Header = () => {
                 <input className="search_input" placeholder="Search for products, brands and more" />
             </div>
             <div className="action_bar">
-                <a href="/profile">
+                <Link to="/profile">
                     <div className="action_container">
                         {/* <span className="material-symbols-outlined action_icon">person</span> */}
                         <IoPerson />
                         <span className="action_name">Profile</span>
                     </div>
-                </a>
+                </Link>
 
                 <div className="action_container">
                     {/* <span className="material-symbols-outlined action_icon">favorite</span> */}
@@ -35,12 +36,12 @@ const Header = () => {
                     <span className="action_name">Wishlist</span>
                 </div>
 
-                <a className="action_container" href="/bag">
+                <Link className="action_container" to="/bag">
                     {/* <span className="material-symbols-outlined action_icon">shopping_bag</span> */}
                     <LuBaggageClaim />
                     <span className="action_name">Bag</span>
                     <span className="bag-item-count">0</span>
-                </a>
+                </Link>
             </div>
         </header>
     </>
