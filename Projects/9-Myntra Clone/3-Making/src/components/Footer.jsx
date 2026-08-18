@@ -41,7 +41,7 @@ const Footer = () => {
             <hr />
 
             <div className="copyright">
-                © 2023 www.vastraa.com. All rights reserved.
+                © 2026 www.vastraa.com. All rights reserved.
             </div>
         </footer>
     </>
