@@ -6,6 +6,7 @@ const vastraaStore = configureStore({
     reducer: {
         items: itemSlice.reducer,
         fetchStatus: fetchStatusSlice.reducer, 
+        bag: bagSlice.reducer,
     }
 });
 
