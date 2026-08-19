@@ -1,6 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import itemSlice from "./itemsSlice";
 import fetchStatusSlice from "./fetchStatusSlice";
+import bagSlice from "./bagSlice";
 
 const vastraaStore = configureStore({
     reducer: {

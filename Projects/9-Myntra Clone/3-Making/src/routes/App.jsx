@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 // import HomeItem from "../components/HomeItem"
 import { Outlet } from "react-router-dom"
 import FetchItems from "../components/FetchItems"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
 
@@ -23,7 +24,6 @@ export default App;
 
 
 
-// git subtree split --prefix="Projects/9-Myntra
-// Clone" -b vastraa-branch
+// git subtree split --prefix="Projects/9-Myntra Clone" -b vastraa-branch
 // git push vastraa vastraa-branch:main --force
 // git branch -D vastraa-branch
